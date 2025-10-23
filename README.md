@@ -19,7 +19,7 @@
 
 `nb_api` 是一个为现代 FastAPI 应用量身打造的 **CRUD 路由自动生成框架**。你只需定义好你的 `SQLModel` 模型，`nb_api` 就能为你自动创建一整套完整、健壮且文档齐全的增、删、改、查（CRUD）API 接口。
 
-它的诞生是为了解决 `fastapi-crudrouter` 停止维护且不兼容 Pydantic v2 的问题，并在此基础上提供了更强大、更现代化的功能。
+`nb_api` 旨在解决为 FastAPI 应用重复编写 CRUD 接口的痛点。它吸取了现有工具的优点，并针对 Pydantic v2 和 SQLModel 进行了深度优化，提供了更强大、更现代化的功能。
 
 ## ✨ 核心优势
 
@@ -168,11 +168,4 @@ def publish_book(item_id: int):
     return {"message": "Book published!"}
 ```
 
-## 💡 与 `fastapi-crudrouter` 的关系
-
-`nb_api` 旨在成为 `fastapi-crudrouter` 在现代 Python & FastAPI 生态中的精神继承者和功能升级版。它解决了 `fastapi-crudrouter` 因停止维护而带来的兼容性问题，并专注于 `SQLModel`，提供了更强大、更易用的功能。
-
-## 许可证
-
-本项目采用 MIT 许可证。
 
