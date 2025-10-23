@@ -180,7 +180,7 @@ def publish_book(item_id: int):
 ```
 
 
-#### 5 一个接口不用写,nb_api自动生成的接口
+### 5 一个接口没写,下面都是nb_api自动生成的接口
 
 接口文档截图:
 [![pVXA2ZD.png](https://s21.ax1x.com/2025/10/23/pVXA2ZD.png)](https://imgchr.com/i/pVXA2ZD)
