@@ -38,10 +38,14 @@ pip install very_nb_api fastapi sqlmodel uvicorn
 
 **注意安装和实际导入不同,因为提示nb_api这个名字和pypi已存在的包相似冲突了**
 #### 安装
+```
 pip install very_nb_api
+```
 
 #### 导入
+```
 import nb_api
+```
 
 ## 快速开始
 
@@ -176,3 +180,9 @@ def publish_book(item_id: int):
 ```
 
 
+#### 5 一个接口不用写,nb_api自动生成的接口
+
+接口文档截图:
+![接口截图](接口截图.png)
+
+这些接口都是nb_api自动生成的,你只需要定义好你的SQLModel模型,nb_api就会自动生成这些接口,全部都不是人工手写def 的 fastapi 接口
