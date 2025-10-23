@@ -36,6 +36,13 @@
 pip install very_nb_api fastapi sqlmodel uvicorn
 ```
 
+**注意安装和实际导入不同,因为提示nb_api这个名字和pypi已存在的包相似冲突了**
+#### 安装
+pip install very_nb_api
+
+#### 导入
+import nb_api
+
 ## 快速开始
 
 在短短十几行代码内，即可拥有一个功能完备的 CRUD API。

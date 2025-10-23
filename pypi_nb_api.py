@@ -18,7 +18,7 @@ os.system(f"{sys.executable} setup.py sdist bdist_wheel")
 # Upload
 os.system(f"{sys.executable} -m twine upload dist/*")
 
-# shutil.rmtree("build", ignore_errors=True)
+shutil.rmtree("build", ignore_errors=True)
 
 
 time.sleep(100000)
