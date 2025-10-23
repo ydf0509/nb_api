@@ -38,8 +38,7 @@ setup(
     classifiers=[
         "Development Status :: 4 - Beta",
         "Intended Audience :: Developers",
-        "License :: OSI Approved :: MIT License",
-        "License :: OSI Approved :: MIT License",
+
         "Programming Language :: Python :: 3",
         "Framework :: FastAPI",
         "Topic :: Internet :: WWW/HTTP",
