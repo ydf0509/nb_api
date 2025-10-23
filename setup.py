@@ -13,7 +13,7 @@ setup(
     name="nb_api",
     version='0.1',
     author="NB API Team",
-    author_email="nbapi@example.com",
+    author_email="ydf0509@example.com",
     description="基于 FastAPI + Pydantic v2 + SQLModel 的自动 CRUD 路由生成框架",
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -39,6 +39,7 @@ setup(
         "Development Status :: 4 - Beta",
         "Intended Audience :: Developers",
         "License :: OSI Approved :: MIT License",
+        "License :: OSI Approved :: MIT License",
         "Programming Language :: Python :: 3",
         "Framework :: FastAPI",
         "Topic :: Internet :: WWW/HTTP",
@@ -48,4 +49,3 @@ setup(
     ],
     keywords="fastapi crud rest api sqlmodel pydantic router",
 )
-
