@@ -10,7 +10,7 @@ readme_file = Path(__file__).parent / "README.md"
 long_description = readme_file.read_text(encoding="utf-8")
 
 setup(
-    name="nb_api",
+    name="very_nb_api",
     version='0.1',
     author="NB API Team",
     author_email="ydf0509@example.com",

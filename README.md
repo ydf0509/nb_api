@@ -33,7 +33,7 @@
 ## 🛠️ 安装
 
 ```bash
-pip install nb_api fastapi sqlmodel uvicorn
+pip install very_nb_api fastapi sqlmodel uvicorn
 ```
 
 ## 快速开始
