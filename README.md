@@ -183,6 +183,6 @@ def publish_book(item_id: int):
 #### 5 一个接口不用写,nb_api自动生成的接口
 
 接口文档截图:
-![接口截图](接口截图.png)
+[![pVXA2ZD.png](https://s21.ax1x.com/2025/10/23/pVXA2ZD.png)](https://imgchr.com/i/pVXA2ZD)
 
 这些接口都是nb_api自动生成的,你只需要定义好你的SQLModel模型,nb_api就会自动生成这些接口,全部都不是人工手写def 的 fastapi 接口
