@@ -9,5 +9,5 @@
 
 from .core.base import CRUDGenerator
 from .core.sqlmodel import SQLModelCRUDRouter
-from .version import __version__
+
 
