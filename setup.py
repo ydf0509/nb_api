@@ -11,7 +11,7 @@ long_description = readme_file.read_text(encoding="utf-8")
 
 setup(
     name="very_nb_api",
-    version='0.6',
+    version='0.7',
     author="NB API Team",
     author_email="ydf0509@example.com",
     description="基于 FastAPI + Pydantic v2 + SQLModel 的自动 CRUD 路由生成框架",
