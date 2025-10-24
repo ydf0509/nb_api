@@ -1,6 +1,18 @@
 # markdown content namespace: nb_api readme 
 
 
+## File Tree
+
+
+```
+
+└── README.md
+
+```
+
+---
+
+
 ## Included Files
 
 
@@ -194,7 +206,7 @@ def publish_book(item_id: int):
 ```
 
 
-#### 5 一个接口不用写,nb_api自动生成的接口
+### 5 一个接口没写,下面都是nb_api自动生成的接口
 
 接口文档截图:
 [![pVXA2ZD.png](https://s21.ax1x.com/2025/10/23/pVXA2ZD.png)](https://imgchr.com/i/pVXA2ZD)
@@ -203,15 +215,36 @@ def publish_book(item_id: int):
 
 
 **code file end: README.md**
--------------------------------------------
+
+---
 
 # markdown content namespace: nb_api codes 
 
 
+## File Tree
+
+
+```
+
+└── nb_api
+    ├── __init__.py
+    ├── contrib
+    │   └── fastapi_helpers.py
+    └── core
+        ├── __init__.py
+        ├── base.py
+        ├── mem.py
+        ├── sqlmodel.py
+        ├── types.py
+        └── utils.py
+
+```
+
+---
+
+
 ## Included Files
 
-
-- `nb_api/ai_read.md`
 
 - `nb_api/__init__.py`
 
@@ -233,23 +266,6 @@ def publish_book(item_id: int):
 ---
 
 
-### code file start: nb_api/ai_read.md 
-
-nb_api 是一个框架, 用户在定义orm后,使用nb_api 自动生成接口,用户少写简单代码
-
-1.使用最新版本的 fastapi + pydantic v2 ,开发 nb_api
-2.nb_api 要实现 三方包 fastapi_crudrouter 的所有功能和接口,教程和源码在 tests/fastapi_crudrouter_all_docs_and_codes.md
-3.nb_api 只需要兼容sqlmodel,不需要兼容 tortoise ormar sqlchemy 等orm
-4.python版本要求python3.9以上
-5.框架代码写在 nb_api 文件夹下
-6.ai验证代码时候要使用python 解释器 D:/ProgramData/Miniconda3/envs/py39b/python.exe
-
-我现在需要开发一个nb_api的三方包,实现上面的功能,你来帮我实现
-
-**code file end: nb_api/ai_read.md**
--------------------------------------------
-
-
 ### code file start: nb_api/__init__.py 
 
 ```python
@@ -264,13 +280,14 @@ nb_api 是一个框架, 用户在定义orm后,使用nb_api 自动生成接口,�
 
 from .core.base import CRUDGenerator
 from .core.sqlmodel import SQLModelCRUDRouter
-from .version import __version__
+
 
 
 ```
 
 **code file end: nb_api/__init__.py**
--------------------------------------------
+
+---
 
 
 ### code file start: nb_api/contrib/fastapi_helpers.py 
@@ -349,7 +366,8 @@ def add_slow_request_logger(
 ```
 
 **code file end: nb_api/contrib/fastapi_helpers.py**
--------------------------------------------
+
+---
 
 
 ### code file start: nb_api/core/base.py 
@@ -628,7 +646,8 @@ class CRUDGenerator(Generic[T], APIRouter, ABC):
 ```
 
 **code file end: nb_api/core/base.py**
--------------------------------------------
+
+---
 
 
 ### code file start: nb_api/core/mem.py 
@@ -757,7 +776,8 @@ class CRUDGenerator(Generic[T], APIRouter, ABC):
 ```
 
 **code file end: nb_api/core/mem.py**
--------------------------------------------
+
+---
 
 
 ### code file start: nb_api/core/sqlmodel.py 
@@ -1000,7 +1020,8 @@ class SQLModelCRUDRouter(CRUDGenerator[SCHEMA]):
 ```
 
 **code file end: nb_api/core/sqlmodel.py**
--------------------------------------------
+
+---
 
 
 ### code file start: nb_api/core/types.py 
@@ -1011,6 +1032,7 @@ class SQLModelCRUDRouter(CRUDGenerator[SCHEMA]):
 from typing import Any, Callable, Dict, Generic, List, Literal, TypeVar, Optional, Sequence
 from fastapi.params import Depends
 from pydantic import BaseModel
+from pydantic.generics import GenericModel
 
 PAGINATION = Dict[str, Optional[int]]
 PYDANTIC_SCHEMA = BaseModel
@@ -1018,16 +1040,24 @@ PYDANTIC_SCHEMA = BaseModel
 T = TypeVar("T")
 DEPENDENCIES = Optional[Sequence[Depends]]
 
-class ResponseModel(BaseModel, Generic[T]):
+class ResponseModel(GenericModel, Generic[T]):
     """统一响应模型"""
     status_code: int = 0
     msg: str = "success"
     data: Optional[T] = None
 
-class ErrorResponseModel(BaseModel):
+class ErrorResponseModel(GenericModel):
     """错误响应模型"""
     status_code: int
     msg: str
+
+
+def gen_resp(data: T) -> ResponseModel[T]:
+    return ResponseModel(data=data)
+
+def gen_err_resp(status_code: int, msg: str) -> ErrorResponseModel:
+    return ErrorResponseModel(status_code=status_code, msg=msg)
+
 
 CALLABLE = Callable[..., Any]
 CALLABLE_LIST = Callable[..., List[Any]]
@@ -1055,7 +1085,8 @@ class SearchRequest(BaseModel):
 ```
 
 **code file end: nb_api/core/types.py**
--------------------------------------------
+
+---
 
 
 ### code file start: nb_api/core/utils.py 
@@ -1162,7 +1193,8 @@ def pagination_factory(max_limit: Optional[int] = None) -> Any:
 ```
 
 **code file end: nb_api/core/utils.py**
--------------------------------------------
+
+---
 
 
 ### code file start: nb_api/core/__init__.py 
@@ -1176,5 +1208,6 @@ def pagination_factory(max_limit: Optional[int] = None) -> Any:
 ```
 
 **code file end: nb_api/core/__init__.py**
--------------------------------------------
+
+---
 

@@ -3,6 +3,8 @@
 import time
 import logging
 from typing import Optional, List
+import anyio
+from anyio import to_thread
 from fastapi import FastAPI, Request
 from fastapi.responses import Response
 
@@ -68,3 +70,31 @@ def add_slow_request_logger(
             )
 
         return response
+
+
+def set_anyio_thread_limiter_total_tokens(total_tokens: int=40) -> None:
+    """
+    设置 anyio 线程限制器总令牌数,默认是在 anyio 写死了40个线程,用户可以调整
+
+    针对的是 用户使用 同步接口的写法,设置线程数量
+    @app.route()  
+    def api1(...)  
+    """
+
+
+
+    """
+    # 用户需要再fastapi的 lifespan 中调用这个函数,不能直接在模块顶层设置调用这个函数
+    ```python
+    @asynccontextmanager
+    async def lifespan(app: FastAPI):
+        # 在应用启动时设置线程池大小
+        DEFAULT_THREAD_POOL_WORKERS = 200
+        # set_anyio_thread_limiter_total_tokens(DEFAULT_THREAD_POOL_WORKERS)
+        to_thread.current_default_thread_limiter().total_tokens = DEFAULT_THREAD_POOL_WORKERS
+        print(f"Thread pool size set to: {DEFAULT_THREAD_POOL_WORKERS}")
+        yield
+    ```
+
+    """
+    to_thread.current_default_thread_limiter().total_tokens = total_tokens
